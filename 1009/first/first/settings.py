@@ -52,6 +52,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 1. local apps
     "articles",
+    "pages",
     # 2. third party apps
     # 3. django apps
     "django.contrib.admin",
@@ -77,7 +78,9 @@ ROOT_URLCONF = "first.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # Python pathlib 문법임 객체로 주소 표현.
+        # BASE_DIR은 최상단 1009를 잡아줌
+        "DIRS": [BASE_DIR / "first" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

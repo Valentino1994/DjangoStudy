@@ -1,5 +1,8 @@
 from django.shortcuts import render
 import random
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 # View 함수의 첫번째 파라미터는 무조건 request
@@ -39,3 +42,27 @@ def dinner(request):
     }
 
     return render(request, "dinner.html", context)
+
+
+@csrf_exempt
+def throw(request):
+
+    return render(request, "throw.html")
+
+@csrf_exempt
+def catch(request):
+
+    message = request.POST.get("message")
+    
+    context = {
+        "message": message
+    }
+
+    return render(request, "catch.html", context)
+
+# 주소의 변수를 같이 받으며 Variable Routing의 Variable과 이름이 일치해야함
+def hello(request, name):
+    context = {
+        "name": name
+    }
+    return render(request, "hello.html", context)
