@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{# include 사용해서 상속을 여러개 받을 수 도 있음 #}
+
+{% block content %}
+    <h1>Articles</h1>
+    <ul>
+        {% for article in articles %}
+            <p>글 번호 : {{ article.pk }}</p>
+            <p>글 제목 : {{ article.title }}</p>
+            <p>글 내용 : {{ article.content }}</p>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock content %}
